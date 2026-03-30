@@ -43,4 +43,10 @@ class DevolucionServiceTest {
         String resultado = service.registrar("D1234", "PROD01", "Juan Perez", "Producto fallado de fábrica", fechaCompra, fechaDevolucion);
         assertEquals("Ingrese una fecha de devolución válida", resultado);
     }
+
+    @Test
+    void testRegistroExitoso() {
+        String resultado = service.registrar("D1234", "ABC123", "Juan Perez", "Producto fallado de fábrica", LocalDate.now(), LocalDate.now());
+        assertEquals("La devolución ha sido registrada correctamente", resultado);
+    }
 }
