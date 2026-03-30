@@ -28,5 +28,19 @@ class DevolucionServiceTest {
         assertEquals("El nombre del cliente debe tener al menos cuatro caracteres alfabéticos", resultado);
     }
 
+    @Test
+    void testMotivoInvalido() {
+        // Caso de prueba: Motivo de solo 5 caracteres
+        String resultado = service.registrar("D1234", "PROD01", "Juan Perez", "Error", LocalDate.now(), LocalDate.now());
+        assertEquals("El motivo de la devolución debe tener al menos diez caracteres", resultado);
+    }
 
+    @Test
+    void testFechaInvalida() {
+        LocalDate fechaCompra = LocalDate.now();
+        LocalDate fechaDevolucion = fechaCompra.minusDays(5); // Fecha inválida (anterior a la compra)
+
+        String resultado = service.registrar("D1234", "PROD01", "Juan Perez", "Producto fallado de fábrica", fechaCompra, fechaDevolucion);
+        assertEquals("Ingrese una fecha de devolución válida", resultado);
+    }
 }
