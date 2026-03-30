@@ -20,4 +20,13 @@ class DevolucionServiceTest {
         String resultado = service.registrar("D1234", "ABC12", "Juan Perez", "Producto defectuoso", LocalDate.now(), LocalDate.now());
         assertEquals("Ingrese un código de producto válido", resultado);
     }
+
+    @Test
+    void testNombreClienteInvalido() {
+        // Caso de prueba: Nombre muy corto
+        String resultado = service.registrar("D1234", "PROD01", "Ana", "Producto defectuoso", LocalDate.now(), LocalDate.now());
+        assertEquals("El nombre del cliente debe tener al menos cuatro caracteres alfabéticos", resultado);
+    }
+
+
 }

@@ -8,8 +8,11 @@ public class DevolucionService {
         /*if (!codDev.matches("^D\\d{4}$")) {
             return "Ingrese un código de devolución válido";
         }*/
-        if (codProd == null || !codProd.matches("^[a-zA-Z0-9]{6}$")) {
+        /*if (codProd == null || !codProd.matches("^[a-zA-Z0-9]{6}$")) {
             return "Ingrese un código de producto válido";
+        }*/
+        if (cliente == null || !cliente.matches("^[a-zA-Z ]{4,}$")) {
+            return "El nombre del cliente debe tener al menos cuatro caracteres alfabéticos";
         }
         return "La devolución ha sido registrada correctamente";
     }
