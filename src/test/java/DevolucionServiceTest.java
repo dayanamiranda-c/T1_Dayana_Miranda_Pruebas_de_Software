@@ -13,4 +13,11 @@ class DevolucionServiceTest {
         // Verificación: Debe retornar el mensaje de error específico del examen
         assertEquals("Ingrese un código de devolución válido", resultado);
     }
+
+    @Test
+    void testCodigoProductoInvalido() {
+        // Caso de prueba: código con solo 5 caracteres (debe tener 6)
+        String resultado = service.registrar("D1234", "ABC12", "Juan Perez", "Producto defectuoso", LocalDate.now(), LocalDate.now());
+        assertEquals("Ingrese un código de producto válido", resultado);
+    }
 }
